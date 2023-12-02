@@ -19,7 +19,7 @@ res
                             <p class="card-text"><b><i>SubRegion: ${value[i].subregion}</i></b></p>
                             <p class="card-text"><b><i>Population: ${value[i].population}</i></b></p>
                             <p class ="card-title">Country Code  : ${value[i].cca3}<p>
-                            <button type="button" class="btn btn-light" onclick =" getWeatherData('${value[i].name.common}')">Click For Weather</button>
+                            <button type="button" class="btn btn-light" onclick =" country('${value[i].name.common}')">Click For Weather</button>
                            
                 </div>
                
@@ -33,17 +33,17 @@ res
       document.body.append(div);
     }
   });
-  function getWeatherData(names) {
-    // Use names in your fetch request to get weather data.
+  function country(names) {
+   
     var apiKey = "ef9d4453debccbd0df79ad0d47452a11";
     var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${names}&appid=${apiKey}`;
   
     fetch(weatherUrl)
       .then((response) => response.json())
       .then((weatherData) => {
-        var weatherCountryName = weatherData.name;
+        var weather = weatherData.name;
   
-        if (weatherCountryName === names) {
+        if (weather === names) {
           alert(
             `Weather in ${weatherData.name} : ${weatherData.main.temp_min} min:deg&c and ${weatherData.main.temp_max} max:deg&c`
           );
